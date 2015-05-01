@@ -61,10 +61,52 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-javascript-design-pattern" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/04/29/javascript-design-pattern/" class="article-date">
+  <time datetime="2015-04-29T14:51:28.000Z" itemprop="datePublished">2015-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/04/29/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一直很喜欢前端界的大牛addyosmani，趁着假期拜读了他的Javascript设计模式<a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book" target="_blank" rel="external">Learning Javascript Design Patterns</a>。这篇文章主要作为个人的学习记录和笔记。</p>
+<hr>
+<h1 id="什么是设计模式">什么是设计模式</h1><h2 id="原生的对象">原生的对象</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">	key: <span class="string">'value'</span>;</span><br><span class="line">	func: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="comment">// ...</span></span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">myObject.key2 = <span class="string">'new value'</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="模块模式">模块模式</h2><p>模块模式一般是着重于类公有/私有的封装，在Javascript里模块是用一个包含着公有/私有方法和变量的简单对象来模拟。模块模式的封装主要是用闭包，保证只返回公有方法，其他内容保存在闭包里面。<br>Javascript不像其他语言拥有公有/私有变量，所以通过函数作用域来模拟，除了在返回对象里面定义的方法和变量对外公开，其他变量和方法都属于模块自己私有。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testModule = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		</span><br><span class="line">		incrementCounter: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> counter++;</span><br><span class="line">		&#125;,</span><br><span class="line"></span><br><span class="line">		resetCounter: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			counter = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<h2 id="模块暴露模式">模块暴露模式</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> revealModule = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> privateVar = <span class="string">'real module'</span>,</span><br><span class="line">		publicVar = <span class="string">'hello'</span>;</span><br><span class="line">	</span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">privateDisplay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'my name:'</span> + privateVar);</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">publicSetName</span><span class="params">(name)</span> </span>&#123;</span><br><span class="line">		privateVar = name;</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">publicGetName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">		<span class="keyword">return</span> privateDisplay();</span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		setName: publicSetName,</span><br><span class="line">		getName: publicGetName,</span><br><span class="line">		greeting: publicVar,</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)();</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line"># 单例模式</span><br><span class="line">``` javascript</span><br><span class="line"><span class="keyword">var</span> singleton = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> instance;</span><br><span class="line"></span><br><span class="line">	<span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h1 id="观察者模式">观察者模式</h1><h1 id="中介者模式">中介者模式</h1><h1 id="指令模式">指令模式</h1>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/04/29/javascript-design-pattern/" data-id="ci94yyevu00011l95dessq4ea" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-div-container-wrapper" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/04/19/div-container-wrapper/" class="article-date">
-  <time datetime="2015-04-18T19:49:04.000Z" itemprop="datePublished">2015-04-19</time>
+  <time datetime="2015-04-18T19:59:16.000Z" itemprop="datePublished">2015-04-19</time>
 </a>
     
   </div>
@@ -86,7 +128,7 @@
         <p>平时在看网站页面源码的时候总会看到类似class=”container”或者class=”wrapper”类似的用法，为了解决自己的困惑，我搜索了一下相关的关键词，发现其实也有其他人有类似的疑问。<br>这里我找到一个个人比较认同的答案作为这个问题的解释。<br><a href="https://teamtreehouse.com/forum/div-containers-div-wrappers" target="_blank" rel="external">链接在此</a></p>
 <hr>
 <p>答案大概是这么写的：<br>A container or wrapper is a dummy div used for purposes of setting backgrounds, floats or padding on another div. Sometimes you need an parent div to get a block level element to do what you want, whether that’s simply setting a background or using margin: 0 auto to center a block. People just call them wrappers out of custom and also that it’s a very uncommon need for a class name. It means nothing technically.</p>
-<p>也就是说，其实我们用container和wrapper作用差不多，使用场景是当我们需要统一控制块级元素的背景或布局居中时。这时候通过简单地为需要统一表现的块级元素加上一层div来实现控制。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"nav"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article"</span>&gt;</span></span><br><span class="line">			 ... ...</span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>也就是说，其实我们用container和wrapper作用差不多，使用场景是当我们需要统一控制块级元素的背景或布局居中时。这时候通过简单地为需要统一表现的块级元素加上一层div来实现控制。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"nav"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article"</span>&gt;</span></span><br><span class="line">		... ...</span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <pre><code class="css"><span class="class">.container</span> <span class="rules">{
     <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">980px</span></span></span>;
     <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;
@@ -96,46 +138,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/19/div-container-wrapper/" data-id="ci8nfujjl0004ws95thffev7l" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-javascript-design-pattern" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/04/06/javascript-design-pattern/" class="article-date">
-  <time datetime="2015-04-06T00:56:34.000Z" itemprop="datePublished">2015-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/04/06/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一直很喜欢前端界的大牛addyosmani，趁着假期拜读了他的Javascript设计模式<a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book" target="_blank" rel="external">Learning Javascript Design Patterns</a>。这篇文章主要作为个人的学习记录和笔记。</p>
-<hr>
-<h1 id="什么是设计模式">什么是设计模式</h1><h2 id="原生的对象">原生的对象</h2><h2 id="模块模式">模块模式</h2><p>模块模式一般是着重于类公有/私有的封装，在Javascript里模块是用一个包含着公有/私有方法和变量的简单对象来模拟。模块模式的封装主要是用闭包，保证只返回公有方法，其他内容保存在闭包里面。<br>Javascript不像其他语言拥有公有/私有变量，所以通过函数作用域来模拟，除了在返回对象里面定义的方法和变量对外公开，其他变量和方法都属于模块自己私有。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testModule = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	</span><br><span class="line">	<span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		</span><br><span class="line">		incrementCounter: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			<span class="keyword">return</span> counter++;</span><br><span class="line">		&#125;,</span><br><span class="line"></span><br><span class="line">		resetCounter: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">			counter = <span class="number">0</span>;</span><br><span class="line">		&#125;</span><br><span class="line"></span><br><span class="line">	&#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/06/javascript-design-pattern/" data-id="ci8nfujj90001ws95lgdw0zjf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/04/19/div-container-wrapper/" data-id="ci94yyew400041l95wtkzxfx6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -180,7 +183,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/31/Sublime-text-mac-markdown/" data-id="ci8nfujic0000ws95p2m57zi1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/31/Sublime-text-mac-markdown/" data-id="ci94yyev400001l95yafuob37" class="article-share-link">Share</a>
       
       
     </footer>
@@ -227,7 +230,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci8nfujjh0002ws95xm8tkw6p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci94yyew100021l95oetul70j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -272,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci8nfujjj0003ws95eo05go88" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci94yyew300031l9578ug30xb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -309,11 +312,11 @@
       <ul>
         
           <li>
-            <a href="/2015/04/19/div-container-wrapper/">关于网页布局css的container和wrapper</a>
+            <a href="/2015/04/29/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
           </li>
         
           <li>
-            <a href="/2015/04/06/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
+            <a href="/2015/04/19/div-container-wrapper/">关于网页布局css的container和wrapper</a>
           </li>
         
           <li>
