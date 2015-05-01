@@ -10,7 +10,7 @@
 答案大概是这么写的：A container or wrapper is a dummy div used for purposes of s">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于网页布局css的container和wrapper">
-<meta property="og:url" content="http://yoursite.com/2015/04/19/div-container-wrapper/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/05/01/div-container-wrapper/index.html">
 <meta property="og:site_name" content="Steven叔叔's Blog">
 <meta property="og:description" content="平时在看网站页面源码的时候总会看到类似class=”container”或者class=”wrapper”类似的用法，为了解决自己的困惑，我搜索了一下相关的关键词，发现其实也有其他人有类似的疑问。这里我找到一个个人比较认同的答案作为这个问题的解释。链接在此
 
@@ -67,8 +67,8 @@
       <div class="outer">
         <section id="main"><article id="post-div-container-wrapper" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/04/19/div-container-wrapper/" class="article-date">
-  <time datetime="2015-04-18T19:59:16.000Z" itemprop="datePublished">2015-04-19</time>
+    <a href="/2015/05/01/div-container-wrapper/" class="article-date">
+  <time datetime="2015-05-01T02:55:26.000Z" itemprop="datePublished">2015-05-01</time>
 </a>
     
   </div>
@@ -90,17 +90,17 @@
         <p>平时在看网站页面源码的时候总会看到类似class=”container”或者class=”wrapper”类似的用法，为了解决自己的困惑，我搜索了一下相关的关键词，发现其实也有其他人有类似的疑问。<br>这里我找到一个个人比较认同的答案作为这个问题的解释。<br><a href="https://teamtreehouse.com/forum/div-containers-div-wrappers" target="_blank" rel="external">链接在此</a></p>
 <hr>
 <p>答案大概是这么写的：<br>A container or wrapper is a dummy div used for purposes of setting backgrounds, floats or padding on another div. Sometimes you need an parent div to get a block level element to do what you want, whether that’s simply setting a background or using margin: 0 auto to center a block. People just call them wrappers out of custom and also that it’s a very uncommon need for a class name. It means nothing technically.</p>
-<p>也就是说，其实我们用container和wrapper作用差不多，使用场景是当我们需要统一控制块级元素的背景或布局居中时。这时候通过简单地为需要统一表现的块级元素加上一层div来实现控制。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"nav"</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	  <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">	<span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article"</span>&gt;</span></span><br><span class="line">		... ...</span><br><span class="line">	<span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line">	</span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<p>也就是说，其实我们用container和wrapper作用差不多，使用场景是当我们需要统一控制块级元素的背景或布局居中时。这时候通过简单地为需要统一表现的块级元素加上一层div来实现控制。<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"header"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">ul</span> <span class="attribute">class</span>=<span class="value">"nav"</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">      <span class="tag">&lt;<span class="title">li</span> <span class="attribute">class</span>=<span class="value">"nav-item"</span>&gt;</span><span class="tag">&lt;/<span class="title">li</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">ul</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"content"</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"container"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"article"</span>&gt;</span></span><br><span class="line">    ... ...</span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
 <pre><code class="css"><span class="class">.container</span> <span class="rules">{
-    <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">980px</span></span></span>;
-    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;
+  <span class="rule"><span class="attribute">width</span>:<span class="value"> <span class="number">980px</span></span></span>;
+  <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">0</span> auto</span></span>;
 <span class="rule">}</span></span>
 </code></pre>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/04/19/div-container-wrapper/" data-id="ci95034b10004bd95nvdf7pqi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ci950d2uf0004dp95aju496s6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,19 +109,10 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/05/01/javascript-design-pattern/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption">Newer</strong>
-      <div class="article-nav-title">
-        
-          Javascript 设计模式读书笔记
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/03/31/Sublime-text-mac-markdown/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/05/01/javascript-design-pattern/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">用Sublime Text打造mac下的markdown编辑器</div>
+      <div class="article-nav-title">Javascript 设计模式读书笔记</div>
     </a>
   
 </nav>
@@ -143,7 +134,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/04/">April 2015</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">3</span></li></ul>
     </div>
   </div>
 
@@ -155,11 +146,11 @@
       <ul>
         
           <li>
-            <a href="/2015/05/01/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
+            <a href="/2015/05/01/div-container-wrapper/">关于网页布局css的container和wrapper</a>
           </li>
         
           <li>
-            <a href="/2015/04/19/div-container-wrapper/">关于网页布局css的container和wrapper</a>
+            <a href="/2015/05/01/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
           </li>
         
           <li>
