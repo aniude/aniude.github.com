@@ -10,7 +10,7 @@
 安装 Package Control输入快捷键 Ctrl + ` 进入命令行1import urllib2,os; pf=&apos;Package Control.sublime-package&apos;; ipp = sublime.installed_packages_p">
 <meta property="og:type" content="article">
 <meta property="og:title" content="用Sublime Text打造mac下的markdown编辑器">
-<meta property="og:url" content="http://yoursite.com/2015/03/31/Sublime-text-mac-markdown/index.html">
+<meta property="og:url" content="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/index.html">
 <meta property="og:site_name" content="Steven叔叔's Blog">
 <meta property="og:description" content="为了结合hexo在Mac下更好编辑.md文件，目前选用了Sublime Text2编辑器加markdown插件的方式作为默认MD编辑工具
 
@@ -67,8 +67,8 @@
       <div class="outer">
         <section id="main"><article id="post-Sublime-text-mac-markdown" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/03/31/Sublime-text-mac-markdown/" class="article-date">
-  <time datetime="2015-03-31T14:51:40.000Z" itemprop="datePublished">2015-03-31</time>
+    <a href="/2015/05/02/Sublime-text-mac-markdown/" class="article-date">
+  <time datetime="2015-05-02T01:48:29.000Z" itemprop="datePublished">2015-05-02</time>
 </a>
     
   </div>
@@ -91,16 +91,16 @@
 <hr>
 <h2 id="安装_Package_Control">安装 Package Control</h2><p>输入快捷键 Ctrl + ` 进入命令行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">import urllib2,os; pf=<span class="string">'Package Control.sublime-package'</span>; ipp = sublime.installed_packages_path(); os.makedirs( ipp ) <span class="keyword">if</span> not os.path.exists(ipp) <span class="keyword">else</span> None; urllib2.install_opener( urllib2.build_opener( urllib2.ProxyHandler( ))); open( os.path.join( ipp, pf), <span class="string">'wb'</span> ).write( urllib2.urlopen( <span class="string">'http://sublime.wbond.net/'</span> +pf.replace( <span class="string">' '</span>,<span class="string">'%20'</span> )).read()); <span class="built_in">print</span>( <span class="string">'Please restart Sublime Text to finish installation'</span>)</span><br></pre></td></tr></table></figure></p>
 <p>安装后重启可以在<strong>Preferences -&gt; Package Settings</strong>看到<strong>Package Control</strong>.</p>
-<h2 id="安装_Markdown_Preview">安装 Markdown Preview</h2><p>输入Command ＋ Shift + p 调出命令面板， 搜索<strong>markdown preview</strong>，点击安装。</p>
-<h3 id="定义快捷键">定义快捷键</h3><p>**Preferences -&gt; Key Bindings User<br>新增一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>], <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>, <span class="string">"args"</span>: &#123; <span class="string">"target"</span>: <span class="string">"browser"</span>&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="安装_Markdown_Preview">安装 Markdown Preview</h2><p>输入Command ＋ Shift + p 调出命令面板， 先搜索<strong>Install Package</strong>, 然后再搜索<strong>markdown preview</strong>，点击安装。</p>
+<h3 id="定义快捷键">定义快捷键</h3><p><strong>Preferences -&gt; Key Bindings User</strong><br>新增一行<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&#123; <span class="string">"keys"</span>: [<span class="string">"alt+m"</span>], <span class="string">"command"</span>: <span class="string">"markdown_preview"</span>, <span class="string">"args"</span>: &#123; <span class="string">"target"</span>: <span class="string">"browser"</span>&#125;&#125;</span><br></pre></td></tr></table></figure></p>
 <p>定义alt + m 为 markdown 预览快捷键。</p>
 <h3 id="设置语法高亮">设置语法高亮</h3><p><strong>Preferences -&gt;Package Settings-&gt;Markdown Preview-&gt;Setting Default</strong>找到<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">... ...</span><br><span class="line"><span class="string">"enable_mathjax"</span>: <span class="literal">false</span>,</span><br><span class="line"><span class="string">"enable_highlight"</span>: <span class="literal">false</span></span><br></pre></td></tr></table></figure></p>
-<p>将这2个值都改为true。但语法高亮似乎与选择的主题有关。我暂时选择了LAZY的Color Scheme.</p>
+<p>将这2个值都改为true。但语法高亮似乎与选择的主题有关。我暂时选择了LAZY的Color Scheme. 中间也尝试了用了iTg，Monokai Extended等主题，都感觉不太理想。可能我自己比较喜欢白色的编辑界面。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/31/Sublime-text-mac-markdown/" data-id="ci950d2sw0000dp95xq3hjoiq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ci9mvh84p0005bx950au0wew4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -109,19 +109,19 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/05/01/javascript-design-pattern/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/05/02/Sublime-text-general-config/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          Javascript 设计模式读书笔记
+          常用Sublime Text配置及使用技巧
         
       </div>
     </a>
   
   
-    <a href="/2015/03/28/hexo-github-blog/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/05/01/div-container-wrapper/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">Hexo + GitHub 搭建个人博客</div>
+      <div class="article-nav-title">关于网页布局css的container和wrapper</div>
     </a>
   
 </nav>
@@ -143,7 +143,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">3</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -155,23 +155,23 @@
       <ul>
         
           <li>
+            <a href="/2015/05/13/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/02/Sublime-text-general-config/">常用Sublime Text配置及使用技巧</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/02/Sublime-text-mac-markdown/">用Sublime Text打造mac下的markdown编辑器</a>
+          </li>
+        
+          <li>
             <a href="/2015/05/01/div-container-wrapper/">关于网页布局css的container和wrapper</a>
           </li>
         
           <li>
-            <a href="/2015/05/01/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/31/Sublime-text-mac-markdown/">用Sublime Text打造mac下的markdown编辑器</a>
-          </li>
-        
-          <li>
             <a href="/2015/03/28/hexo-github-blog/">Hexo + GitHub 搭建个人博客</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/28/hello-world/">Hello World</a>
           </li>
         
       </ul>
