@@ -63,8 +63,8 @@
   
     <article id="post-javascript-design-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/13/javascript-design-pattern/" class="article-date">
-  <time datetime="2015-05-13T15:42:16.000Z" itemprop="datePublished">2015-05-13</time>
+    <a href="/2015/05/16/javascript-design-pattern/" class="article-date">
+  <time datetime="2015-05-16T02:35:49.000Z" itemprop="datePublished">2015-05-16</time>
 </a>
     
   </div>
@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/13/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
+      <a class="article-title" href="/2015/05/16/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
     </h1>
   
 
@@ -84,15 +84,26 @@
     <div class="article-entry" itemprop="articleBody">
       
         <p>一直很喜欢前端界的大牛addyosmani，趁着假期拜读了他的Javascript设计模式<a href="http://addyosmani.com/resources/essentialjsdesignpatterns/book" target="_blank" rel="external">Learning Javascript Design Patterns</a>。这篇文章主要作为个人在javascript底层知识的学习记录和笔记。其实今年来陆陆续续有在关注和看一下国外的书籍及前沿的技术内容，但确实是感觉自己的英文有点菜，看不懂的内容很多，尤其是对于长句子的解读更加弱爆。这方面的动力主要是工作压力原因和个人的意愿，以我目前的知识结构感觉很难让自己及整个团队再上一个台阶。</p>
-<hr>
-<h1 id="什么是设计模式">什么是设计模式</h1><h2 id="原生的对象">原生的对象</h2><p>这里看到有些中文书籍硬生生地把Object literal notation翻译成对象字面量，感觉非常地奇怪。个人更愿意把它叫做Javascript原生对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    key: <span class="string">'value'</span>;</span><br><span class="line">    func: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">myObject.key2 = <span class="string">'new value'</span>;</span><br></pre></td></tr></table></figure></p>
+<h1 id="什么是设计模式">什么是设计模式</h1><h2 id="设计模式3个最主要的好处：">设计模式3个最主要的好处：</h2><ul>
+<li>被验证的解决方案</li>
+<li>能够被重用</li>
+<li>富有表现张力</li>
+</ul>
+<h1 id="反模式">反模式</h1><ul>
+<li>定义大量的全局变量</li>
+<li>使用setTimeout或setInterval内部用eval触发的字符串</li>
+<li>修改JS原生的对象原型</li>
+<li>直接在一行里面写JS代码</li>
+<li>使用document.createElement替代document.write<h1 id="设计模式分类">设计模式分类</h1><h2 id="创建型设计模式">创建型设计模式</h2></li>
+</ul>
+<h2 id="结构设计模式">结构设计模式</h2><h2 id="行为设计模式">行为设计模式</h2><h2 id="原生的对象">原生的对象</h2><p>这里看到有些中文书籍硬生生地把Object literal notation翻译成对象字面量，感觉非常地奇怪。个人更愿意把它叫做Javascript原生对象。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> myObject = &#123;</span><br><span class="line">    key: <span class="string">'value'</span>;</span><br><span class="line">    func: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="comment">// ...</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line">myObject.key2 = <span class="string">'new value'</span>;</span><br></pre></td></tr></table></figure></p>
 <h2 id="模块模式(Module_Pattern)">模块模式(Module Pattern)</h2><p>模块模式一般是着重于类公有/私有的封装，在Javascript里模块是用一个包含着公有/私有方法和变量的简单对象来模拟。模块模式的封装主要是用闭包，保证只返回公有方法，其他内容保存在闭包里面。<br>这里还有一个叫IIFE的概念。全称是immediately-invoked functional expression. 立即调用函数表达式。通过IIFE实现闭包。Javascript不像传统的其他面向对象语言拥有公有/私有变量的语法，所以通过函数作用域来模拟，除了在返回对象里面定义的方法和变量对外公开，其他变量和方法都属于模块自己私有。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> testModule = <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">var</span> counter = <span class="number">0</span>;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;       </span><br><span class="line">        incrementCounter: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">return</span> counter++;</span><br><span class="line">        &#125;,</span><br><span class="line"></span><br><span class="line">        resetCounter: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            counter = <span class="number">0</span>;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;)();</span><br></pre></td></tr></table></figure></p>
 <h2 id="模块暴露模式(The_Revealing_Module_Pattern)">模块暴露模式(The Revealing Module Pattern)</h2><p>模块暴露模式其实是做为模块模式的补充，这里这个翻译不知道是不是最合适的。这种js的写法现在已经被大规模的推广，个人感觉比较好的地方就是在代码尾段的返回对象就可以对这个模块对外的接口一目了然。当然这种情况也更多的使用在类似一些until工具类上。但书里提到的关于2者的区别其实界限我没看得太明白，在此暂时搁下再议。<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> revealModule = (<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> privateVar = <span class="string">'real module'</span>,</span><br><span class="line">        publicVar = <span class="string">'hello'</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">privateDisplay</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'my name:'</span> + privateVar);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">publicSetName</span><span class="params">(name)</span> </span>&#123;</span><br><span class="line">        privateVar = name;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">publicGetName</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> privateDisplay();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        setName: publicSetName,</span><br><span class="line">        getName: publicGetName,</span><br><span class="line">        greeting: publicVar,</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">``` </span><br><span class="line"></span><br><span class="line">## 单例模式</span><br><span class="line">``` javascript</span><br><span class="line"><span class="keyword">var</span> mySingleton = (<span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">var</span> instance;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">init</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">return</span> &#123;</span><br><span class="line">            publicMethod: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">'singleton'</span>);</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        getInstance: <span class="function"><span class="keyword">function</span><span class="params">()</span> </span>&#123;</span><br><span class="line">            <span class="keyword">if</span> (!instance) &#123;</span><br><span class="line">                instance = init();</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">            <span class="keyword">return</span> instacne;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;)();</span><br><span class="line">mySingleton.getInstance().publicMethod();</span><br></pre></td></tr></table></figure></p>
 <h2 id="观察者模式">观察者模式</h2><h2 id="中介者模式">中介者模式</h2><h2 id="指令模式">指令模式</h2>
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/13/javascript-design-pattern/" data-id="ci9obx1m30001u895nc500v37" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/16/javascript-design-pattern/" data-id="ci9sh5n2p0001zj95m0fwthp6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -141,7 +152,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ci9obx1lc0000u895ffq1t735" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ci9sh5n1x0000zj95zl8uyavx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -186,7 +197,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ci9obx1m90005u895y89hvkgg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ci9sh5n2v0005zj95igcpbao8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -231,7 +242,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ci9obx1m70004u8957t1aejlk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ci9sh5n2u0004zj956fpz0ojg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -278,7 +289,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci9obx1m50002u895051h1c3t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci9sh5n2r0002zj95pfhaoz0o" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +334,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci9obx1m60003u8957048dxp4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci9sh5n2s0003zj95w1ayw56r" class="article-share-link">Share</a>
       
       
     </footer>
@@ -360,7 +371,7 @@
       <ul>
         
           <li>
-            <a href="/2015/05/13/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
+            <a href="/2015/05/16/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
           </li>
         
           <li>
