@@ -61,6 +61,62 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css_priority_overwrite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/17/css_priority_overwrite/" class="article-date">
+  <time datetime="2015-05-17T13:06:25.000Z" itemprop="datePublished">2015-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/17/css_priority_overwrite/">CSS属性权重覆盖问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一般来说，CSS属性权重覆盖有以下几个概念：</p>
+<ul>
+<li>!important 重要性</li>
+<li>默认继承</li>
+<li>优先级计算</li>
+</ul>
+<p>＃ !important 重要性<br>!important默认的权重最高，会覆盖其他所有属性. 而且!important属性会无视默认CSS的权重问题，即权重相同后面的会覆盖前面定义的CSS样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> black <span class="important">!important</span></span></span>; <span class="rule">//权重最高</span><br><span class="line">&#125;</span></span>   </span><br><span class="line"></span><br><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<h1 id="默认继承">默认继承</h1><p>例如color, font这些属性，父元素的颜色影响子元素是有用的，避免大规模定义，可以提供效率。但类似margin, padding这些CSS是默认不继承父元素，但也提供了以下的方法实现继承：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">aside</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">aside</span> <span class="tag">section</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> inherit</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>与inherit相对的值是initial. 表示取消继承. (?怎么用?)</p>
+<h2 id="通用选择器">通用选择器</h2><h1 id="优先级计算">优先级计算</h1><p>牢记：ID选择器比任意数量的class, 属性或元素选择器要高，<br>用a, b, c, d 代表优先级依次递减。计算公式:</p>
+<ul>
+<li>a 如果style属性定义的声明，则为1，否则为0;</li>
+<li>b 等于id选择器的数目</li>
+<li>c 等于属性选择器，class和伪class的数量</li>
+<li>d 等于元素名和伪元素的数目</li>
+</ul>
+<p>以下权重为0,0,1,3(a = 0, b = 0, c = 1, d = 3)<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">article section h1.title &#123;</span><br><span class="line"> ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>以下权重为0,0,1<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;section style="padding-bottom: 10px;"&gt;</span><br></pre></td></tr></table></figure></p>
+<h2 id="命名空间">命名空间</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">24px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">36px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span><span class="class">.hightlight</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">30px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<p>场景：主页定义了h2的字体大小, 子页面重新覆盖了主页面的h2字体大小，因为需求需要，又覆盖了子页面的h2字体大小。<br>这样会导致的问题就是css代码的层级层级越来越长，特别在用LESS/SCSS不恰当使用下，这种情况会被大量的滥用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/17/css_priority_overwrite/" data-id="ci9sh8gb000050v95w53wxd55" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-javascript-design-pattern" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/05/16/javascript-design-pattern/" class="article-date">
@@ -103,7 +159,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/16/javascript-design-pattern/" data-id="ci9sh5n2p0001zj95m0fwthp6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/16/javascript-design-pattern/" data-id="ci9sh8gau00010v95tgl3686z" class="article-share-link">Share</a>
       
       
     </footer>
@@ -152,7 +208,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ci9sh5n1x0000zj95zl8uyavx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ci9sh8ga100000v95esofbbpr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -197,7 +253,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ci9sh5n2v0005zj95igcpbao8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ci9sh8gb100060v95mrlbwz1s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -242,7 +298,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ci9sh5n2u0004zj956fpz0ojg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ci9sh8gay00040v95c7siwdyc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -289,7 +345,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci9sh5n2r0002zj95pfhaoz0o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci9sh8gav00020v95u3figc8a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -334,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci9sh5n2s0003zj95w1ayw56r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci9sh8gax00030v95e0saapw2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -359,7 +415,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -369,6 +425,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/05/17/css_priority_overwrite/">CSS属性权重覆盖问题</a>
+          </li>
         
           <li>
             <a href="/2015/05/16/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
@@ -384,10 +444,6 @@
         
           <li>
             <a href="/2015/05/01/div-container-wrapper/">关于网页布局css的container和wrapper</a>
-          </li>
-        
-          <li>
-            <a href="/2015/03/28/hexo-github-blog/">Hexo + GitHub 搭建个人博客</a>
           </li>
         
       </ul>
