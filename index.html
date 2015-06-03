@@ -61,10 +61,10 @@
       <div class="outer">
         <section id="main">
   
-    <article id="post-css_priority_overwrite" class="article article-type-post" itemscope itemprop="blogPost">
+    <article id="post-SMACSS-guideline" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/05/17/css_priority_overwrite/" class="article-date">
-  <time datetime="2015-05-17T15:24:54.000Z" itemprop="datePublished">2015-05-17</time>
+    <a href="/2015/06/04/SMACSS-guideline/" class="article-date">
+  <time datetime="2015-06-03T23:19:50.000Z" itemprop="datePublished">2015-06-04</time>
 </a>
     
   </div>
@@ -75,7 +75,7 @@
         
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/css_priority_overwrite/">CSS属性权重覆盖问题</a>
+      <a class="article-title" href="/2015/06/04/SMACSS-guideline/">SMACSS CSS指引</a>
     </h1>
   
 
@@ -83,13 +83,138 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>一般来说，CSS属性权重覆盖有以下几个概念：</p>
+        <p>SMACSS 全称为 Scalable Modular Architecture CSS. 即可扩展模块化结构CSS. </p>
+<h1 id="分类规则(SMACSS核心)：">分类规则(SMACSS核心)：</h1><ul>
+<li>Base</li>
+<li>Layout</li>
+<li>Module</li>
+<li>State</li>
+<li>Theme</li>
+</ul>
+<h1 id="Base_Rules_－_基本规则">Base Rules － 基本规则</h1><p>主要应用于元素选择器，后代选择器，子选择器，伪类. 不包括ID或类选择器. </p>
+<h2 id="CSS_Resets">CSS Resets</h2><h1 id="Layout_Rules_-_布局规则">Layout Rules - 布局规则</h1><p>唯一主要使用ID选择器(JS Hook)</p>
+<h1 id="Module_Rules_－_模块规则">Module Rules － 模块规则</h1><p>页面的”肉”，每一个模块都应该设计成独立的组件，让页面更加灵活。模块可以在页面不同部分简单移动而不会破坏布局。<br>避免使用ID或元素选择器</p>
+<h2 id="避免元素选择器">避免元素选择器</h2><p>使用元素的子选择器或后代选择器需要保证元素选择器的可预见性。<br>只加入有语义的选择器。<br>如果希望使用，应该限制在一层类选择器里面。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/04/SMACSS-guideline/" data-id="ciahdngao0009v495evjtrfjn" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-shadowsocks-guideline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/03/shadowsocks-guideline/" class="article-date">
+  <time datetime="2015-06-03T14:42:32.000Z" itemprop="datePublished">2015-06-03</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/03/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>购买的digtalocean(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低的。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了关于shadowsocks的管理系统的东西，供大家学习参考。</p>
+<h1 id="安装步骤">安装步骤</h1><h2 id="安装lnmp">安装lnmp</h2><h2 id="安装shadowsocks">安装shadowsocks</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/03/shadowsocks-guideline/" data-id="ciahdng9w0000v495riiua46o" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-oocss-main-principle" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/18/oocss-main-principle/" class="article-date">
+  <time datetime="2015-05-17T16:03:55.000Z" itemprop="datePublished">2015-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/18/oocss-main-principle/">2个主要的OOCSS原则</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="把容器的内容分离">把容器的内容分离</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.module</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.hd</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#333</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"hd"</span>&gt;</span>title<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h1 id="元素的结构的规则和皮肤应该分开">元素的结构的规则和皮肤应该分开</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.module</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.module-sale</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#efefef</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module module-sale"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/05/18/oocss-main-principle/" data-id="ciahdngaa0001v495qjya34n0" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css_priority_overwrite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/05/17/css_priority_overwrite/" class="article-date">
+  <time datetime="2015-05-17T15:28:57.000Z" itemprop="datePublished">2015-05-17</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/05/17/css_priority_overwrite/">CSS优先级覆盖问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一般来说，CSS优先级覆盖有以下几个概念：</p>
 <ul>
 <li>!important 重要性</li>
 <li>默认继承</li>
 <li>优先级计算</li>
 </ul>
-<h2 id="!important_重要性">!important 重要性</h2><p>!important默认的权重最高，会覆盖其他所有属性. 而且!important属性会无视默认CSS的权重问题，即权重相同后面的会覆盖前面定义的CSS样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> black <span class="important">!important</span></span></span>; <span class="rule">//权重最高</span><br><span class="line">&#125;</span></span>   </span><br><span class="line"></span><br><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="!important_(重要性)">!important (重要性)</h2><p>!important默认的权重最高，会覆盖其他所有属性. 而且!important属性会无视默认CSS的权重问题，即权重相同后面的会覆盖前面定义的CSS样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> black <span class="important">!important</span></span></span>; <span class="rule">//权重最高</span><br><span class="line">&#125;</span></span>   </span><br><span class="line"></span><br><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
 <h2 id="默认继承">默认继承</h2><p>例如color, font这些属性，父元素的颜色影响子元素是有用的，避免大规模定义，可以提供效率。但类似margin, padding这些CSS是默认不继承父元素，但也提供了以下的方法实现继承：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">aside</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">aside</span> <span class="tag">section</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> inherit</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
 <p>与inherit相对的值是initial. 表示取消继承. (?怎么用?)</p>
 <h3 id="通用选择器">通用选择器</h3><h2 id="优先级计算">优先级计算</h2><p>牢记：ID选择器比任意数量的class, 属性或元素选择器要高.<br>用a, b, c, d 代表优先级依次递减。计算公式:</p>
@@ -100,14 +225,14 @@
 <li>d 等于元素名和伪元素的数目</li>
 </ul>
 <p>以下权重为0,0,1,3(a = 0, b = 0, c = 1, d = 3)<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">article section h1.title &#123;</span><br><span class="line"> ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以下权重为0,1,0,0<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;section style="padding-bottom: 10px;"&gt;</span><br></pre></td></tr></table></figure></p>
+<p>以下权重为0,1,0,0<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;section style="padding-bottom: 10px;"&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure></p>
 <h3 id="命名空间">命名空间</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">24px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">36px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span><span class="class">.hightlight</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">30px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
 <p>场景：主页定义了h2的字体大小, 子页面重新覆盖了主页面的h2字体大小，因为需求需要，又覆盖了子页面的h2字体大小。<br>这样会导致的问题就是css代码的层级层级越来越长，特别在用LESS/SASS不恰当使用下，这种情况会被大量的滥用。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/css_priority_overwrite/" data-id="ci9sm2b0u0005vz95xv8nmtd9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/css_priority_overwrite/" data-id="ciahdngai0006v495tr6qnnlz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/javascript-design-pattern/" data-id="ci9sm2b0j0001vz95xipm30uq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/javascript-design-pattern/" data-id="ciahdngab0002v495wcc08k39" class="article-share-link">Share</a>
       
       
     </footer>
@@ -217,7 +342,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ci9sm2azq0000vz956rge9bp4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ciahdngan0008v49558bnkjn1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -262,7 +387,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ci9sm2b0w0006vz955is6kczf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ciahdngak0007v4950wcfun2q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ci9sm2b0t0004vz95vpf27bww" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ciahdngah0005v495r3gc6s3i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -354,7 +479,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ci9sm2b0q0002vz95mkz2mg0l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ciahdngad0003v495v1l2shxq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +524,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ci9sm2b0r0003vz952hfdizhz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ciahdngaf0004v495w99p2rux" class="article-share-link">Share</a>
       
       
     </footer>
@@ -424,7 +549,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -436,23 +561,23 @@
       <ul>
         
           <li>
-            <a href="/2015/05/17/css_priority_overwrite/">CSS属性权重覆盖问题</a>
+            <a href="/2015/06/04/SMACSS-guideline/">SMACSS CSS指引</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/03/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/18/oocss-main-principle/">2个主要的OOCSS原则</a>
+          </li>
+        
+          <li>
+            <a href="/2015/05/17/css_priority_overwrite/">CSS优先级覆盖问题</a>
           </li>
         
           <li>
             <a href="/2015/05/17/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/02/Sublime-text-general-config/">常用Sublime Text配置及使用技巧</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/02/Sublime-text-mac-markdown/">用Sublime Text打造mac下的markdown编辑器</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/01/div-container-wrapper/">关于网页布局css的container和wrapper</a>
           </li>
         
       </ul>
