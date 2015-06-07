@@ -61,6 +61,91 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-shadowsocks-guideline" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/07/shadowsocks-guideline/" class="article-date">
+  <time datetime="2015-06-07T04:14:28.000Z" itemprop="datePublished">2015-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/07/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>购买的digtalocean(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低的。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了关于shadowsocks的管理系统ss-panel的东西，供大家学习参考。</p>
+<h1 id="安装步骤">安装步骤</h1><h2 id="安装lnmp">安装<a href="http://lnmp.org" target="_blank" rel="external">lnmp</a></h2><p>安装步骤很简单，但是需要注意的是lnmp自带的php版本为5.3，需要在线升级到5.4之后ss-panel才能用。</p>
+<h2 id="安装shadowsocks_Manyuser">安装<a href="https://github.com/mengskysama/shadowsocks" target="_blank" rel="external">shadowsocks Manyuser</a></h2><h2 id="安装ss-panel">安装<a href="https://github.com/orvice/ss-panel" target="_blank" rel="external">ss-panel</a></h2><p>这里注意ss-panel只是针对Shadows Manyuser的前端程序，所以2者实际上的数据库是同一个库(假设场景是前端和后端都是同一台机器)</p>
+<h1 id="关于多节点">关于多节点</h1><p>这里我还没去测试，具体的概念就是部署了多个shadowsocks后端程序，然后通过与前端程序共享一个数据库实现。也就是说，mysql需要开放远程连接的方式给所有的后端节点访问。</p>
+<h1 id="关于DO节点问题">关于DO节点问题</h1><p>看到很多人吐槽DO节点SSH延迟问题，我之前是用了NY(纽约)节点，SSH很卡，youtube也不顺畅。更不用说1080P了。目前已经转移了加州节点，测试youtube设置720p基本顺畅，1080p还是稍微有点卡。</p>
+<h1 id="关于跑慢带宽的传说">关于跑慢带宽的传说</h1><p>这么好的事情并没发生在我身上。并已经按照网上的说法用了<a href="http://bbs.tcp.hk/thread-41-1-1.html" target="_blank" rel="external">my.serverspeeder.com</a>进行加速。也尝试更换了新加坡的节点，快的时候确实可以达到100ms不到的ping值，但就是不太稳定。慢的时候也要300-400ms.而且serverspeeder加速在新加坡节点会更慢，很奇怪。更有网上其他人说修改ss加密方式对速度也有提升。我也对比了rd4-md5, bf-cfb, aes-256-cfb。感觉速度变化差异不大。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/07/shadowsocks-guideline/" data-id="cialyiifg00021b957jf4qre4" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-supervisor-manage-python" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/07/supervisor-manage-python/" class="article-date">
+  <time datetime="2015-06-07T00:21:29.000Z" itemprop="datePublished">2015-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/07/supervisor-manage-python/">使用Supervisor管理python进程</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="安装">安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install python-setuptools</span><br><span class="line">easy_install supervisor</span><br><span class="line">``` </span><br><span class="line"><span class="comment">## 检查安装是否成功</span></span><br><span class="line">``` bash</span><br><span class="line"><span class="built_in">echo</span>_supervisord_conf</span><br></pre></td></tr></table></figure>
+<h2 id="创建配置文件">创建配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supervisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure>
+<h2 id="新增进程启动项">新增进程启动项</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[program:shadowsocks]</span><br><span class="line"><span class="built_in">command</span>=python &lt;PATH&gt;/server.py -c &lt;PATH&gt;/config.json</span><br></pre></td></tr></table></figure>
+<h2 id="运行">运行</h2><pre><code class="bash">supervisord //启动
+supervisorctl //打开命令行
+</code></pre>
+<p>注意修改conf文件之后用调用supervisorctl reload, 配置文件才能生效</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/07/supervisor-manage-python/" data-id="cialyiif900011b956czq3a2l" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-SMACSS-guideline" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/04/SMACSS-guideline/" class="article-date">
@@ -99,44 +184,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/04/SMACSS-guideline/" data-id="ciahdngao0009v495evjtrfjn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-shadowsocks-guideline" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/06/03/shadowsocks-guideline/" class="article-date">
-  <time datetime="2015-06-03T14:42:32.000Z" itemprop="datePublished">2015-06-03</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/06/03/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>购买的digtalocean(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低的。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了关于shadowsocks的管理系统的东西，供大家学习参考。</p>
-<h1 id="安装步骤">安装步骤</h1><h2 id="安装lnmp">安装lnmp</h2><h2 id="安装shadowsocks">安装shadowsocks</h2>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/03/shadowsocks-guideline/" data-id="ciahdng9w0000v495riiua46o" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/04/SMACSS-guideline/" data-id="cialyiiem00001b950uwgj0wb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -176,7 +224,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/18/oocss-main-principle/" data-id="ciahdngaa0001v495qjya34n0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/18/oocss-main-principle/" data-id="cialyiifi00031b95vpc1irjo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -232,7 +280,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/css_priority_overwrite/" data-id="ciahdngai0006v495tr6qnnlz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/css_priority_overwrite/" data-id="cialyiifp00081b95a6qdlccw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -293,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/javascript-design-pattern/" data-id="ciahdngab0002v495wcc08k39" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/javascript-design-pattern/" data-id="cialyiifk00041b95j5cz9cry" class="article-share-link">Share</a>
       
       
     </footer>
@@ -342,7 +390,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ciahdngan0008v49558bnkjn1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="cialyiift000a1b95kbogzqi6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -387,7 +435,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ciahdngak0007v4950wcfun2q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="cialyiifr00091b95axqqy6s2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -432,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ciahdngah0005v495r3gc6s3i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="cialyiifo00071b95mxw2lx64" class="article-share-link">Share</a>
       
       
     </footer>
@@ -479,7 +527,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ciahdngad0003v495v1l2shxq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="cialyiifl00051b95i2bbse4k" class="article-share-link">Share</a>
       
       
     </footer>
@@ -489,51 +537,10 @@
 
 
   
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/03/28/hello-world/" class="article-date">
-  <time datetime="2015-03-28T01:05:11.000Z" itemprop="datePublished">2015-03-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
   
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/03/28/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="http://hexo.io/" target="_blank" rel="external">Hexo</a>! This is your very first post. Check <a href="http://hexo.io/docs/" target="_blank" rel="external">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="http://hexo.io/docs/troubleshooting.html" target="_blank" rel="external">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="external">GitHub</a>.</p>
-<h2 id="Quick_Start">Quick Start</h2><h3 id="Create_a_new_post">Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/writing.html" target="_blank" rel="external">Writing</a></p>
-<h3 id="Run_server">Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/server.html" target="_blank" rel="external">Server</a></p>
-<h3 id="Generate_static_files">Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/generating.html" target="_blank" rel="external">Generating</a></p>
-<h3 id="Deploy_to_remote_sites">Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="http://hexo.io/docs/deployment.html" target="_blank" rel="external">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hello-world/" data-id="ciahdngaf0004v495w99p2rux" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
+    <nav id="page-nav">
+      <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    </nav>
   
 </section>
         
@@ -549,7 +556,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -561,11 +568,15 @@
       <ul>
         
           <li>
-            <a href="/2015/06/04/SMACSS-guideline/">SMACSS CSS指引</a>
+            <a href="/2015/06/07/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
           </li>
         
           <li>
-            <a href="/2015/06/03/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
+            <a href="/2015/06/07/supervisor-manage-python/">使用Supervisor管理python进程</a>
+          </li>
+        
+          <li>
+            <a href="/2015/06/04/SMACSS-guideline/">SMACSS CSS指引</a>
           </li>
         
           <li>
@@ -574,10 +585,6 @@
         
           <li>
             <a href="/2015/05/17/css_priority_overwrite/">CSS优先级覆盖问题</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/17/javascript-design-pattern/">Javascript 设计模式读书笔记</a>
           </li>
         
       </ul>

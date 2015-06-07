@@ -3,44 +3,23 @@
 <head>
   <meta charset="utf-8">
   
-  <title>SMACSS CSS指引 | Steven叔叔&#39;s Blog</title>
+  <title>使用Supervisor管理python进程 | Steven叔叔&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="SMACSS 全称为 Scalable Modular Architecture CSS. 即可扩展模块化结构CSS. 
-分类规则(SMACSS核心)：
-Base
-Layout
-Module
-State
-Theme
-
-Base Rules － 基本规则主要应用于元素选择器，后代选择器，子选择器，伪类. 不包括ID或类选择器. 
-CSS ResetsLayout Rules - 布局规则唯一主要使用">
+  <meta name="description" content="安装123456yum install python-setuptoolseasy_install supervisor``` ## 检查安装是否成功``` bashecho_supervisord_conf
+创建配置文件1echo_supervisord_conf &amp;gt; /etc/supervisord.conf
+新增进程启动项12[program:shadowsocks]command=p">
 <meta property="og:type" content="article">
-<meta property="og:title" content="SMACSS CSS指引">
-<meta property="og:url" content="http://yoursite.com/2015/06/04/SMACSS-guideline/index.html">
+<meta property="og:title" content="使用Supervisor管理python进程">
+<meta property="og:url" content="http://yoursite.com/2015/06/07/supervisor-manage-python/index.html">
 <meta property="og:site_name" content="Steven叔叔's Blog">
-<meta property="og:description" content="SMACSS 全称为 Scalable Modular Architecture CSS. 即可扩展模块化结构CSS. 
-分类规则(SMACSS核心)：
-Base
-Layout
-Module
-State
-Theme
-
-Base Rules － 基本规则主要应用于元素选择器，后代选择器，子选择器，伪类. 不包括ID或类选择器. 
-CSS ResetsLayout Rules - 布局规则唯一主要使用">
+<meta property="og:description" content="安装123456yum install python-setuptoolseasy_install supervisor``` ## 检查安装是否成功``` bashecho_supervisord_conf
+创建配置文件1echo_supervisord_conf &amp;gt; /etc/supervisord.conf
+新增进程启动项12[program:shadowsocks]command=p">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="SMACSS CSS指引">
-<meta name="twitter:description" content="SMACSS 全称为 Scalable Modular Architecture CSS. 即可扩展模块化结构CSS. 
-分类规则(SMACSS核心)：
-Base
-Layout
-Module
-State
-Theme
-
-Base Rules － 基本规则主要应用于元素选择器，后代选择器，子选择器，伪类. 不包括ID或类选择器. 
-CSS ResetsLayout Rules - 布局规则唯一主要使用">
+<meta name="twitter:title" content="使用Supervisor管理python进程">
+<meta name="twitter:description" content="安装123456yum install python-setuptoolseasy_install supervisor``` ## 检查安装是否成功``` bashecho_supervisord_conf
+创建配置文件1echo_supervisord_conf &amp;gt; /etc/supervisord.conf
+新增进程启动项12[program:shadowsocks]command=p">
   
     <link rel="alternative" href="/atom.xml" title="Steven叔叔&#39;s Blog" type="application/atom+xml">
   
@@ -86,10 +65,10 @@ CSS ResetsLayout Rules - 布局规则唯一主要使用">
   </div>
 </header>
       <div class="outer">
-        <section id="main"><article id="post-SMACSS-guideline" class="article article-type-post" itemscope itemprop="blogPost">
+        <section id="main"><article id="post-supervisor-manage-python" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
-    <a href="/2015/06/04/SMACSS-guideline/" class="article-date">
-  <time datetime="2015-06-03T23:19:50.000Z" itemprop="datePublished">2015-06-04</time>
+    <a href="/2015/06/07/supervisor-manage-python/" class="article-date">
+  <time datetime="2015-06-07T00:21:29.000Z" itemprop="datePublished">2015-06-07</time>
 </a>
     
   </div>
@@ -100,7 +79,7 @@ CSS ResetsLayout Rules - 布局规则唯一主要使用">
         
   
     <h1 class="article-title" itemprop="name">
-      SMACSS CSS指引
+      使用Supervisor管理python进程
     </h1>
   
 
@@ -108,23 +87,18 @@ CSS ResetsLayout Rules - 布局规则唯一主要使用">
     
     <div class="article-entry" itemprop="articleBody">
       
-        <p>SMACSS 全称为 Scalable Modular Architecture CSS. 即可扩展模块化结构CSS. </p>
-<h1 id="分类规则(SMACSS核心)：">分类规则(SMACSS核心)：</h1><ul>
-<li>Base</li>
-<li>Layout</li>
-<li>Module</li>
-<li>State</li>
-<li>Theme</li>
-</ul>
-<h1 id="Base_Rules_－_基本规则">Base Rules － 基本规则</h1><p>主要应用于元素选择器，后代选择器，子选择器，伪类. 不包括ID或类选择器. </p>
-<h2 id="CSS_Resets">CSS Resets</h2><h1 id="Layout_Rules_-_布局规则">Layout Rules - 布局规则</h1><p>唯一主要使用ID选择器(JS Hook)</p>
-<h1 id="Module_Rules_－_模块规则">Module Rules － 模块规则</h1><p>页面的”肉”，每一个模块都应该设计成独立的组件，让页面更加灵活。模块可以在页面不同部分简单移动而不会破坏布局。<br>避免使用ID或元素选择器</p>
-<h2 id="避免元素选择器">避免元素选择器</h2><p>使用元素的子选择器或后代选择器需要保证元素选择器的可预见性。<br>只加入有语义的选择器。<br>如果希望使用，应该限制在一层类选择器里面。</p>
+        <h2 id="安装">安装</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">yum install python-setuptools</span><br><span class="line">easy_install supervisor</span><br><span class="line">``` </span><br><span class="line"><span class="comment">## 检查安装是否成功</span></span><br><span class="line">``` bash</span><br><span class="line"><span class="built_in">echo</span>_supervisord_conf</span><br></pre></td></tr></table></figure>
+<h2 id="创建配置文件">创建配置文件</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">echo</span>_supervisord_conf &gt; /etc/supervisord.conf</span><br></pre></td></tr></table></figure>
+<h2 id="新增进程启动项">新增进程启动项</h2><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">[program:shadowsocks]</span><br><span class="line"><span class="built_in">command</span>=python &lt;PATH&gt;/server.py -c &lt;PATH&gt;/config.json</span><br></pre></td></tr></table></figure>
+<h2 id="运行">运行</h2><pre><code class="bash">supervisord //启动
+supervisorctl //打开命令行
+</code></pre>
+<p>注意修改conf文件之后用调用supervisorctl reload, 配置文件才能生效</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/04/SMACSS-guideline/" data-id="cialyiiem00001b950uwgj0wb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/07/supervisor-manage-python/" data-id="cialyiif900011b956czq3a2l" class="article-share-link">Share</a>
       
       
     </footer>
@@ -133,19 +107,19 @@ CSS ResetsLayout Rules - 布局规则唯一主要使用">
     
 <nav id="article-nav">
   
-    <a href="/2015/06/07/supervisor-manage-python/" id="article-nav-newer" class="article-nav-link-wrap">
+    <a href="/2015/06/07/shadowsocks-guideline/" id="article-nav-newer" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Newer</strong>
       <div class="article-nav-title">
         
-          使用Supervisor管理python进程
+          基于shadowsocks的用户管理系统
         
       </div>
     </a>
   
   
-    <a href="/2015/05/18/oocss-main-principle/" id="article-nav-older" class="article-nav-link-wrap">
+    <a href="/2015/06/04/SMACSS-guideline/" id="article-nav-older" class="article-nav-link-wrap">
       <strong class="article-nav-caption">Older</strong>
-      <div class="article-nav-title">2个主要的OOCSS原则</div>
+      <div class="article-nav-title">SMACSS CSS指引</div>
     </a>
   
 </nav>
