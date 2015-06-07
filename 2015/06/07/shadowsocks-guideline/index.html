@@ -65,7 +65,7 @@
         <section id="main"><article id="post-shadowsocks-guideline" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/07/shadowsocks-guideline/" class="article-date">
-  <time datetime="2015-06-07T05:28:06.000Z" itemprop="datePublished">2015-06-07</time>
+  <time datetime="2015-06-07T05:44:46.000Z" itemprop="datePublished">2015-06-07</time>
 </a>
     
   </div>
@@ -89,12 +89,12 @@
 <h2 id="安装shadowsocks_Manyuser">安装<a href="https://github.com/mengskysama/shadowsocks" target="_blank" rel="external">shadowsocks Manyuser</a></h2><h2 id="安装ss-panel">安装<a href="https://github.com/orvice/ss-panel" target="_blank" rel="external">ss-panel</a></h2><p>这里注意ss-panel只是针对Shadows Manyuser的前端程序，所以2者实际上的数据库是同一个库(假设场景是前端和后端都是同一台机器)</p>
 <h1 id="关于多节点">关于多节点</h1><p>这里我还没去测试，具体的概念就是部署了多个shadowsocks后端程序，然后通过与前端程序共享一个数据库实现。也就是说，mysql需要开放远程连接的方式给所有的后端节点访问。</p>
 <h1 id="关于DO节点问题">关于DO节点问题</h1><p>看到很多人吐槽DO节点SSH延迟问题，我之前是用了NY(纽约)节点，SSH很卡，youtube也不顺畅。更不用说1080P了。目前已经转移了加州节点，测试youtube设置720p基本顺畅，1080p还是稍微有点卡。</p>
-<h1 id="关于跑慢带宽的传说">关于跑慢带宽的传说</h1><p>这么好的事情并没发生在我身上。并已经按照网上的说法用了<a href="http://bbs.tcp.hk/thread-41-1-1.html" target="_blank" rel="external">my.serverspeeder.com</a>进行加速。也尝试更换了新加坡的节点，快的时候确实可以达到100ms不到的ping值，但就是不太稳定。慢的时候也要300-400ms.而且serverspeeder加速在新加坡节点会更慢，很奇怪。更有网上其他人说修改ss加密方式对速度也有提升。我也对比了rd4-md5, bf-cfb, aes-256-cfb。感觉速度变化差异不大。</p>
+<h1 id="关于跑满带宽的传说">关于跑满带宽的传说</h1><p>这么好的事情并没发生在我身上。并已经按照网上的说法用了<a href="http://bbs.tcp.hk/thread-41-1-1.html" target="_blank" rel="external">my.serverspeeder.com</a>进行加速。也尝试更换了新加坡的节点，快的时候确实可以达到100ms不到的ping值，但就是不太稳定。慢的时候也要300-400ms.而且serverspeeder加速在新加坡节点会更慢，很奇怪。更有网上其他人说修改ss加密方式对速度也有提升。我也对比了rd4-md5, bf-cfb, aes-256-cfb。感觉速度变化差异不大。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/07/shadowsocks-guideline/" data-id="ciam14r6x00027895las9rm7r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/07/shadowsocks-guideline/" data-id="ciam1s7vn0002s8958pi9t2md" class="article-share-link">Share</a>
       
       
     </footer>
@@ -102,6 +102,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2015/06/07/css_priority_overwrite/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          CSS优先级覆盖问题
+        
+      </div>
+    </a>
   
   
     <a href="/2015/06/07/supervisor-manage-python/" id="article-nav-older" class="article-nav-link-wrap">
@@ -128,7 +137,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -138,6 +147,10 @@
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/06/07/css_priority_overwrite/">CSS优先级覆盖问题</a>
+          </li>
         
           <li>
             <a href="/2015/06/07/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
@@ -153,10 +166,6 @@
         
           <li>
             <a href="/2015/05/18/oocss-main-principle/">2个主要的OOCSS原则</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/17/css_priority_overwrite/">CSS优先级覆盖问题</a>
           </li>
         
       </ul>

@@ -61,10 +61,66 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css_priority_overwrite" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2015/06/07/css_priority_overwrite/" class="article-date">
+  <time datetime="2015-06-07T05:47:01.000Z" itemprop="datePublished">2015-06-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2015/06/07/css_priority_overwrite/">CSS优先级覆盖问题</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>一般来说，CSS优先级覆盖有以下几个概念：</p>
+<ul>
+<li>!important 重要性</li>
+<li>默认继承</li>
+<li>优先级计算</li>
+</ul>
+<h2 id="!important_(重要性)">!important (重要性)</h2><p>!important默认的权重最高，会覆盖其他所有属性. 而且!important属性会无视默认CSS的权重问题，即权重相同后面的会覆盖前面定义的CSS样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> black <span class="important">!important</span></span></span>; <span class="rule">//权重最高</span><br><span class="line">&#125;</span></span>   </span><br><span class="line"></span><br><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<h2 id="默认继承">默认继承</h2><p>例如color, font这些属性，父元素的颜色影响子元素是有用的，避免大规模定义，可以提供效率。但类似margin, padding这些CSS是默认不继承父元素，但也提供了以下的方法实现继承：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">aside</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">aside</span> <span class="tag">section</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> inherit</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>与inherit相对的值是initial. 表示取消继承. (?怎么用?)</p>
+<h3 id="通用选择器">通用选择器</h3><h2 id="优先级计算">优先级计算</h2><p>牢记：ID选择器比任意数量的class, 属性或元素选择器要高.<br>用a, b, c, d 代表优先级依次递减。计算公式:</p>
+<ul>
+<li>a 如果style属性定义的声明，则为1，否则为0;</li>
+<li>b 等于id选择器的数目</li>
+<li>c 等于属性选择器，class和伪class的数量</li>
+<li>d 等于元素名和伪元素的数目</li>
+</ul>
+<p>以下权重为0,0,1,3(a = 0, b = 0, c = 1, d = 3)<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">article</span> <span class="tag">section</span> <span class="tag">h1</span><span class="class">.title</span> <span class="rules">&#123;</span><br><span class="line">   </span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
+<p>以下权重为0,1,0,0<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;section style="padding-bottom: 10px;"&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure></p>
+<h3 id="命名空间">命名空间</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">24px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">36px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span><span class="class">.hightlight</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">30px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
+<p>场景：主页定义了h2的字体大小, 子页面重新覆盖了主页面的h2字体大小，因为需求需要，又覆盖了子页面的h2字体大小。<br>这样会导致的问题就是css代码的层级层级越来越长，特别在用LESS/SASS不恰当使用下，这种情况会被大量的滥用。</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2015/06/07/css_priority_overwrite/" data-id="ciam1s7vw0008s8959bhn00vu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-shadowsocks-guideline" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2015/06/07/shadowsocks-guideline/" class="article-date">
-  <time datetime="2015-06-07T05:28:06.000Z" itemprop="datePublished">2015-06-07</time>
+  <time datetime="2015-06-07T05:44:46.000Z" itemprop="datePublished">2015-06-07</time>
 </a>
     
   </div>
@@ -88,12 +144,12 @@
 <h2 id="安装shadowsocks_Manyuser">安装<a href="https://github.com/mengskysama/shadowsocks" target="_blank" rel="external">shadowsocks Manyuser</a></h2><h2 id="安装ss-panel">安装<a href="https://github.com/orvice/ss-panel" target="_blank" rel="external">ss-panel</a></h2><p>这里注意ss-panel只是针对Shadows Manyuser的前端程序，所以2者实际上的数据库是同一个库(假设场景是前端和后端都是同一台机器)</p>
 <h1 id="关于多节点">关于多节点</h1><p>这里我还没去测试，具体的概念就是部署了多个shadowsocks后端程序，然后通过与前端程序共享一个数据库实现。也就是说，mysql需要开放远程连接的方式给所有的后端节点访问。</p>
 <h1 id="关于DO节点问题">关于DO节点问题</h1><p>看到很多人吐槽DO节点SSH延迟问题，我之前是用了NY(纽约)节点，SSH很卡，youtube也不顺畅。更不用说1080P了。目前已经转移了加州节点，测试youtube设置720p基本顺畅，1080p还是稍微有点卡。</p>
-<h1 id="关于跑慢带宽的传说">关于跑慢带宽的传说</h1><p>这么好的事情并没发生在我身上。并已经按照网上的说法用了<a href="http://bbs.tcp.hk/thread-41-1-1.html" target="_blank" rel="external">my.serverspeeder.com</a>进行加速。也尝试更换了新加坡的节点，快的时候确实可以达到100ms不到的ping值，但就是不太稳定。慢的时候也要300-400ms.而且serverspeeder加速在新加坡节点会更慢，很奇怪。更有网上其他人说修改ss加密方式对速度也有提升。我也对比了rd4-md5, bf-cfb, aes-256-cfb。感觉速度变化差异不大。</p>
+<h1 id="关于跑满带宽的传说">关于跑满带宽的传说</h1><p>这么好的事情并没发生在我身上。并已经按照网上的说法用了<a href="http://bbs.tcp.hk/thread-41-1-1.html" target="_blank" rel="external">my.serverspeeder.com</a>进行加速。也尝试更换了新加坡的节点，快的时候确实可以达到100ms不到的ping值，但就是不太稳定。慢的时候也要300-400ms.而且serverspeeder加速在新加坡节点会更慢，很奇怪。更有网上其他人说修改ss加密方式对速度也有提升。我也对比了rd4-md5, bf-cfb, aes-256-cfb。感觉速度变化差异不大。</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/07/shadowsocks-guideline/" data-id="ciam14r6x00027895las9rm7r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/07/shadowsocks-guideline/" data-id="ciam1s7vn0002s8958pi9t2md" class="article-share-link">Share</a>
       
       
     </footer>
@@ -136,7 +192,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/07/supervisor-manage-python/" data-id="ciam14r6w00017895xz17ai18" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/07/supervisor-manage-python/" data-id="ciam1s7vl0001s89508msm1aq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -184,7 +240,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/06/04/SMACSS-guideline/" data-id="ciam14r680000789528lxwb4b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/06/04/SMACSS-guideline/" data-id="ciam1s7uu0000s895hl0ywsqa" class="article-share-link">Share</a>
       
       
     </footer>
@@ -224,63 +280,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/18/oocss-main-principle/" data-id="ciam14r6z00037895b3larhcg" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css_priority_overwrite" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2015/05/17/css_priority_overwrite/" class="article-date">
-  <time datetime="2015-05-17T15:28:57.000Z" itemprop="datePublished">2015-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2015/05/17/css_priority_overwrite/">CSS优先级覆盖问题</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>一般来说，CSS优先级覆盖有以下几个概念：</p>
-<ul>
-<li>!important 重要性</li>
-<li>默认继承</li>
-<li>优先级计算</li>
-</ul>
-<h2 id="!important_(重要性)">!important (重要性)</h2><p>!important默认的权重最高，会覆盖其他所有属性. 而且!important属性会无视默认CSS的权重问题，即权重相同后面的会覆盖前面定义的CSS样式<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> black <span class="important">!important</span></span></span>; <span class="rule">//权重最高</span><br><span class="line">&#125;</span></span>   </span><br><span class="line"></span><br><span class="line"><span class="tag">p</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> red</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<h2 id="默认继承">默认继承</h2><p>例如color, font这些属性，父元素的颜色影响子元素是有用的，避免大规模定义，可以提供效率。但类似margin, padding这些CSS是默认不继承父元素，但也提供了以下的方法实现继承：<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">aside</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="tag">aside</span> <span class="tag">section</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> inherit</span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure></p>
-<p>与inherit相对的值是initial. 表示取消继承. (?怎么用?)</p>
-<h3 id="通用选择器">通用选择器</h3><h2 id="优先级计算">优先级计算</h2><p>牢记：ID选择器比任意数量的class, 属性或元素选择器要高.<br>用a, b, c, d 代表优先级依次递减。计算公式:</p>
-<ul>
-<li>a 如果style属性定义的声明，则为1，否则为0;</li>
-<li>b 等于id选择器的数目</li>
-<li>c 等于属性选择器，class和伪class的数量</li>
-<li>d 等于元素名和伪元素的数目</li>
-</ul>
-<p>以下权重为0,0,1,3(a = 0, b = 0, c = 1, d = 3)<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">article section h1.title &#123;</span><br><span class="line"> ... </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>以下权重为0,1,0,0<br><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;section style="padding-bottom: 10px;"&gt;</span><br><span class="line">&lt;/section&gt;</span><br></pre></td></tr></table></figure></p>
-<h3 id="命名空间">命名空间</h3><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">24px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">36px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.home</span> <span class="tag">h2</span><span class="class">.hightlight</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">font-size</span>:<span class="value"> <span class="number">30px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
-<p>场景：主页定义了h2的字体大小, 子页面重新覆盖了主页面的h2字体大小，因为需求需要，又覆盖了子页面的h2字体大小。<br>这样会导致的问题就是css代码的层级层级越来越长，特别在用LESS/SASS不恰当使用下，这种情况会被大量的滥用。</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/css_priority_overwrite/" data-id="ciam14r7700087895phsjrld8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/18/oocss-main-principle/" data-id="ciam1s7vo0003s895nghx787h" class="article-share-link">Share</a>
       
       
     </footer>
@@ -341,7 +341,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/17/javascript-design-pattern/" data-id="ciam14r7000047895zjbluubj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/17/javascript-design-pattern/" data-id="ciam1s7vp0004s895wevt8k1n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -390,7 +390,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ciam14r7b000a7895rj8i5w0c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-general-config/" data-id="ciam1s7w1000as8952sn6kijg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -435,7 +435,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ciam14r7a00097895rpewiydb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/02/Sublime-text-mac-markdown/" data-id="ciam1s7vy0009s895uotkfwkz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -480,7 +480,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ciam14r7600077895p2yt6n9r" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/05/01/div-container-wrapper/" data-id="ciam1s7vu0007s895p2k46ehw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -527,7 +527,7 @@ supervisorctl //打开命令行
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ciam14r7200057895go7zlg4j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2015/03/28/hexo-github-blog/" data-id="ciam1s7vq0005s89553m4iznd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -556,7 +556,7 @@ supervisorctl //打开命令行
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">3</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">6</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/06/">June 2015</a><span class="archive-list-count">4</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/05/">May 2015</a><span class="archive-list-count">5</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2015/03/">March 2015</a><span class="archive-list-count">2</span></li></ul>
     </div>
   </div>
 
@@ -566,6 +566,10 @@ supervisorctl //打开命令行
     <h3 class="widget-title">Recents</h3>
     <div class="widget">
       <ul>
+        
+          <li>
+            <a href="/2015/06/07/css_priority_overwrite/">CSS优先级覆盖问题</a>
+          </li>
         
           <li>
             <a href="/2015/06/07/shadowsocks-guideline/">基于shadowsocks的用户管理系统</a>
@@ -581,10 +585,6 @@ supervisorctl //打开命令行
         
           <li>
             <a href="/2015/05/18/oocss-main-principle/">2个主要的OOCSS原则</a>
-          </li>
-        
-          <li>
-            <a href="/2015/05/17/css_priority_overwrite/">CSS优先级覆盖问题</a>
           </li>
         
       </ul>
