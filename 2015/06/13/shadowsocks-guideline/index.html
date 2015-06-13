@@ -3,23 +3,20 @@
 <head>
   <meta charset="utf-8">
   
-  <title>2个主要的OOCSS原则 | Steven叔叔&#39;s Blog</title>
+  <title>DigitalOcean Shadowsocks的用户管理系统 | Steven叔叔&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="把容器的内容分离12345678.module &amp;#123;    margin: 10px;&amp;#125;.hd &amp;#123;    padding: 5px;    color: #333;&amp;#125;
-123&amp;lt;div class=&quot;module&quot;&amp;gt;    &amp;lt;h1 class=&quot;hd&quot;&amp;gt;title&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;
-元素的结构的规则和皮肤应该分">
+  <meta name="description" content="购买的digitalocean(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了digitalocean部署shadowsocks的管理系统ss-panel的东西，供大家学习参考。
+安装步骤安装lnmp安装lnmp步骤很简单，直接follow官方教程指引基本就可以了。但是需">
 <meta property="og:type" content="article">
-<meta property="og:title" content="2个主要的OOCSS原则">
-<meta property="og:url" content="http://yoursite.com/2015/05/18/oocss-main-principle/index.html">
+<meta property="og:title" content="DigitalOcean Shadowsocks的用户管理系统">
+<meta property="og:url" content="http://yoursite.com/2015/06/13/shadowsocks-guideline/index.html">
 <meta property="og:site_name" content="Steven叔叔's Blog">
-<meta property="og:description" content="把容器的内容分离12345678.module &amp;#123;    margin: 10px;&amp;#125;.hd &amp;#123;    padding: 5px;    color: #333;&amp;#125;
-123&amp;lt;div class=&quot;module&quot;&amp;gt;    &amp;lt;h1 class=&quot;hd&quot;&amp;gt;title&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;
-元素的结构的规则和皮肤应该分">
+<meta property="og:description" content="购买的digitalocean(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了digitalocean部署shadowsocks的管理系统ss-panel的东西，供大家学习参考。
+安装步骤安装lnmp安装lnmp步骤很简单，直接follow官方教程指引基本就可以了。但是需">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="2个主要的OOCSS原则">
-<meta name="twitter:description" content="把容器的内容分离12345678.module &amp;#123;    margin: 10px;&amp;#125;.hd &amp;#123;    padding: 5px;    color: #333;&amp;#125;
-123&amp;lt;div class=&quot;module&quot;&amp;gt;    &amp;lt;h1 class=&quot;hd&quot;&amp;gt;title&amp;lt;/h1&amp;gt;&amp;lt;/div&amp;gt;
-元素的结构的规则和皮肤应该分">
+<meta name="twitter:title" content="DigitalOcean Shadowsocks的用户管理系统">
+<meta name="twitter:description" content="购买的digitalocean(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了digitalocean部署shadowsocks的管理系统ss-panel的东西，供大家学习参考。
+安装步骤安装lnmp安装lnmp步骤很简单，直接follow官方教程指引基本就可以了。但是需">
   
     <link rel="alternative" href="/atom.xml" title="Steven叔叔&#39;s Blog" type="application/atom+xml">
   
@@ -154,11 +151,11 @@
 		</header>				
 	</div>
 </nav>
-      <div class="body-wrap"><article id="post-oocss-main-principle" class="article article-type-post" itemscope itemprop="blogPost">
+      <div class="body-wrap"><article id="post-shadowsocks-guideline" class="article article-type-post" itemscope itemprop="blogPost">
   
     <div class="article-meta">
-      <a href="/2015/05/18/oocss-main-principle/" class="article-date">
-  	<time datetime="2015-05-17T16:03:55.000Z" itemprop="datePublished">2015-05-18</time>
+      <a href="/2015/06/13/shadowsocks-guideline/" class="article-date">
+  	<time datetime="2015-06-13T01:34:04.000Z" itemprop="datePublished">2015-06-13</time>
 </a>
     </div>
   
@@ -171,7 +168,7 @@
         
   
     <h1 class="article-title" itemprop="name">
-      2个主要的OOCSS原则
+      DigitalOcean Shadowsocks的用户管理系统
     </h1>
   
 
@@ -187,10 +184,14 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="把容器的内容分离">把容器的内容分离</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.module</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.hd</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">padding</span>:<span class="value"> <span class="number">5px</span></span></span>;</span><br><span class="line">    <span class="rule"><span class="attribute">color</span>:<span class="value"> <span class="hexcolor">#333</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="title">h1</span> <span class="attribute">class</span>=<span class="value">"hd"</span>&gt;</span>title<span class="tag">&lt;/<span class="title">h1</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h1 id="元素的结构的规则和皮肤应该分开">元素的结构的规则和皮肤应该分开</h1><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class">.module</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">margin</span>:<span class="value"> <span class="number">10px</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br><span class="line"></span><br><span class="line"><span class="class">.module-sale</span> <span class="rules">&#123;</span><br><span class="line">    <span class="rule"><span class="attribute">background</span>:<span class="value"> <span class="hexcolor">#efefef</span></span></span>;</span><br><span class="line"><span class="rule">&#125;</span></span></span><br></pre></td></tr></table></figure>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="title">div</span> <span class="attribute">class</span>=<span class="value">"module module-sale"</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="title">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+        <p>购买的<a href="https://www.digitalocean.com/?refcode=4d886bce0718" target="_blank" rel="external">digitalocean</a>(简称：DO)的VPS除了放置闲置的网站和偶尔翻翻墙之外，其实总体利用率还是很低。有一个电脑小白的朋友，说他想用google找图片，但不知道怎么用google。最近测试并整理了digitalocean部署shadowsocks的管理系统ss-panel的东西，供大家学习参考。</p>
+<h2 id="安装步骤">安装步骤</h2><h3 id="安装lnmp">安装lnmp</h3><p>安装<a href="http://lnmp.org" target="_blank" rel="external">lnmp</a>步骤很简单，直接follow官方教程指引基本就可以了。但是需要注意的是lnmp自带的php版本为5.3，需要在线升级到5.4之后ss-panel才能用。</p>
+<h3 id="安装shadowsocks_manyuser">安装shadowsocks manyuser</h3><p>注意<a href="https://github.com/mengskysama/shadowsocks" target="_blank" rel="external">shadowsocks manyuser</a>运行时时没有并没有完全读config.json的所有配置项，服务端口和密码都是直接读数据库. 如果要修改只能直接改数据库，稍微有点麻烦。</p>
+<h3 id="安装ss-panel">安装ss-panel</h3><p><a href="https://github.com/orvice/ss-panel" target="_blank" rel="external">ss-panel</a>只是针对Shadows Manyuser的前端程序，所以2者实际上的数据库是同一个库(假设场景是前端和后端都是同一台机器)</p>
+<h3 id="关于ss-panel多节点">关于ss-panel多节点</h3><p>这里我还没去测试，具体的概念就是部署了多个shadowsocks后端程序，然后通过与前端程序共享一个数据库实现。也就是说，mysql需要开放远程连接的方式给所有的后端节点访问。</p>
+<h3 id="关于DO节点问题">关于DO节点问题</h3><p>看到很多人吐槽DO节点SSH延迟问题，我之前是用了NY(纽约)节点，SSH很卡，youtube也不顺畅。更不用说1080P了。目前已经转移了加州节点，测试youtube设置720p基本顺畅，1080p还是稍微有点卡。</p>
+<h3 id="关于跑满带宽的传说">关于跑满带宽的传说</h3><p>这么好的事情并没发生在我身上。并已经按照网上的说法用了<a href="http://bbs.tcp.hk/thread-41-1-1.html" target="_blank" rel="external">my.serverspeeder.com</a>进行加速。测试分别对比了speedtest.net，youtube.也尝试更换了新加坡的节点，新加坡节点确实可以达到100ms不到的ping值，但就是不太稳定。慢的时候也要300-400ms. 下载速度也没太多的优势，而且serverspeeder加速在新加坡节点下载速度更慢，很奇怪。更有网上其他人说修改ss加密方式对速度也有提升。我也对比了rd4-md5, bf-cfb, aes-256-cfb。感觉速度变化差异不大。我自己安装的宽带是长宽10M. 没对比过电信的速度如何。</p>
+<p>如果大家对digitalocean VPS感兴趣，可以点击<a href="https://www.digitalocean.com/?refcode=4d886bce0718" target="_blank" rel="external">https://www.digitalocean.com/?refcode=4d886bce0718</a>进行购买，可以获得10刀，digitalocean最低配置是每月5刀，相当于免费使用2个月。如果大家有使用上的问题，欢迎邮箱<a href="&#109;&#x61;&#105;&#108;&#x74;&#x6f;&#x3a;&#x63;&#104;&#x61;&#x6f;&#x68;&#117;&#97;&#x6e;&#103;&#46;&#104;&#x6f;&#110;&#103;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;">&#x63;&#104;&#x61;&#x6f;&#x68;&#117;&#97;&#x6e;&#103;&#46;&#104;&#x6f;&#110;&#103;&#64;&#x67;&#x6d;&#x61;&#105;&#x6c;&#46;&#x63;&#111;&#109;</a>留言给我。</p>
 
       
     </div>
@@ -200,18 +201,9 @@
     
 <nav id="article-nav">
   
-    <a href="/2015/06/04/SMACSS-guideline/" id="article-nav-newer" class="article-nav-link-wrap">
-      <strong class="article-nav-caption"><</strong>
-      <div class="article-nav-title">
-        
-          SMACSS CSS指引
-        
-      </div>
-    </a>
   
-  
-    <a href="/2015/05/17/javascript-design-pattern/" id="article-nav-older" class="article-nav-link-wrap">
-      <div class="article-nav-title">Javascript 设计模式读书笔记</div>
+    <a href="/2015/06/07/css_priority_overwrite/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">CSS优先级覆盖问题</div>
       <strong class="article-nav-caption">></strong>
     </a>
   
@@ -240,7 +232,7 @@
 
 <div class="duoshuo">
 	<!-- 多说评论框 start -->
-	<div class="ds-thread" data-thread-key="oocss-main-principle" data-title="2个主要的OOCSS原则" data-url="http://yoursite.com/2015/05/18/oocss-main-principle/"></div>
+	<div class="ds-thread" data-thread-key="shadowsocks-guideline" data-title="DigitalOcean Shadowsocks的用户管理系统" data-url="http://yoursite.com/2015/06/13/shadowsocks-guideline/"></div>
 	<!-- 多说评论框 end -->
 	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
 	<script type="text/javascript">
